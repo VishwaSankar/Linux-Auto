@@ -1,0 +1,10 @@
+Analyze the automation results below.
+
+1. Summarize the overall job status.
+2. Identify any errors or failures.
+3. Explain the possible cause of each error.
+4. Give actionable recommendations.
+5. Return a concise automation report.
+
+Automation Results:
+
