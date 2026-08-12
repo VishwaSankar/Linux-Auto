@@ -1,0 +1,43 @@
+name: Linux Automation CI
+
+on:
+  push:
+    branches:
+      - main
+
+  schedule:
+    - cron: "*/5 * * * *"
+
+  workflow_dispatch:
+
+jobs:
+  automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: |
+          chmod +x hello.sh
+          chmod +x backup.sh
+          chmod +x generate_report.sh
+
+      - name: Run hello script
+        run: ./hello.sh
+
+      - name: Run backup script
+        run: ./backup.sh
+
+      - name: Generate automation report
+        run: ./generate_report.sh
+
+      - name: Display report
+        run: cat automation_report.txt
+
+      - name: Upload automation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: automation-report
+          path: automation_report.txt
